@@ -1,4 +1,6 @@
 02806_social_data_analysis_project/datasets/Motor_Vehicle_Collisions_-_Crashes_20260407.csv filter=lfs diff=lfs merge=lfs -text
 datasets/Motor_Vehicle_Collisions_-_Crashes_20260407.csv filter=lfs diff=lfs merge=lfs -text
-*.parquet filter=lfs diff=lfs merge=lfs -text
+
+02806_social_data_analysis_project/datasets/person_data.parquet.parquet filter=lfs diff=lfs merge=lfs -text
+datasets/person_data.parquet.parquet filter=lfs diff=lfs merge=lfs -text
 datasets/*.parquet filter=lfs diff=lfs merge=lfs -text

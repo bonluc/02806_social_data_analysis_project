@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision Zero NYC — Ten Years Later</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --ink: #1a1a18;
+            --ink-muted: #5a5a52;
+            --ink-faint: #9a9a90;
+            --paper: #faf9f6;
+            --rule: #e0ddd4;
+            --accent: #2a4a6b;
+            --accent-warm: #8b3a2a;
+            --serif: 'Playfair Display', Georgia, serif;
+            --body: 'Source Serif 4', Georgia, serif;
+            --max: 780px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--body);
+            font-weight: 300;
+            font-size: 18px;
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── HEADER ── */
+        header {
+            border-bottom: 1px solid var(--rule);
+            padding: 60px 24px 50px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            font-family: var(--body);
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: var(--serif);
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            margin-bottom: 24px;
+        }
+
+        .deck {
+            max-width: 560px;
+            margin: 0 auto;
+            font-size: 17px;
+            color: var(--ink-muted);
+            font-style: italic;
+        }
+
+        /* ── RULE DIVIDERS ── */
+        .rule-trio {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 48px auto;
+            max-width: var(--max);
+        }
+        .rule-trio span { display: block; background: var(--rule); }
+        .rule-trio span:nth-child(1),
+        .rule-trio span:nth-child(3) { width: 80px; height: 1px; }
+        .rule-trio span:nth-child(2) { width: 5px; height: 5px; border-radius: 50%; background: var(--ink-faint); }
+
+        /* ── SECTIONS ── */
+        .section {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: 64px 24px;
+            border-bottom: 1px solid var(--rule);
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .section.visible { opacity: 1; transform: translateY(0); }
+        .section:last-child { border-bottom: none; }
+
+        h2 {
+            font-family: var(--serif);
+            font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+            font-weight: 600;
+            line-height: 1.25;
+            letter-spacing: -0.015em;
+            color: var(--ink);
+            margin-bottom: 28px;
+        }
+
+        .section-number {
+            font-family: var(--body);
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: var(--ink);
+            margin-bottom: 1.2em;
+            font-size: 17px;
+        }
+        p:last-of-type { margin-bottom: 0; }
+
+        /* ── PULL QUOTE ── */
+        .pull {
+            border-left: 3px solid var(--accent);
+            margin: 32px 0;
+            padding: 8px 0 8px 24px;
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            line-height: 1.5;
+            color: var(--accent);
+        }
+
+        /* ── STAT ROW ── */
+        .stat-row {
+            display: flex;
+            gap: 1px;
+            background: var(--rule);
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 36px 0;
+        }
+        .stat {
+            flex: 1;
+            background: var(--paper);
+            padding: 20px 24px;
+            text-align: center;
+        }
+        .stat-num {
+            font-family: var(--serif);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--accent-warm);
+            display: block;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        .stat-label {
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+        }
+
+        /* ── VIZ CONTAINERS ── */
+        .viz-wrap {
+            margin-top: 40px;
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            overflow: hidden;
+            background: #fff;
+        }
+        .viz-caption {
+            padding: 14px 18px;
+            border-top: 1px solid var(--rule);
+            font-size: 13px;
+            color: var(--ink-faint);
+            font-style: italic;
+        }
+        .viz-wrap img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .viz-wrap iframe {
+            display: block;
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+
+        /* ── PLACEHOLDER ── */
+        .placeholder {
+            margin-top: 40px;
+            border: 2px dashed var(--rule);
+            border-radius: 4px;
+            padding: 60px 24px;
+            text-align: center;
+            color: var(--ink-faint);
+            font-size: 14px;
+            font-style: italic;
+            background: #fdfcf9;
+        }
+        .placeholder-label {
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: var(--ink-faint);
+        }
+
+        /* ── CONCLUSION ── */
+        .conclusion {
+            background: var(--accent);
+            color: #e8edf2;
+            padding: 64px 24px;
+        }
+        .conclusion-inner { max-width: var(--max); margin: 0 auto; }
+        .conclusion h2 { color: #fff; margin-bottom: 20px; }
+        .conclusion p { color: #c8d4de; font-size: 17px; }
+        .conclusion .eyebrow { color: rgba(255,255,255,0.4); }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            padding: 36px 24px;
+            font-size: 13px;
+            color: var(--ink-faint);
+            border-top: 1px solid var(--rule);
+        }
+
+        /* ── INTRO VISIBLE BY DEFAULT ── */
+        #intro { opacity: 1; transform: none; }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <p class="eyebrow">Data Analysis &nbsp;·&nbsp; New York City 2014–2025</p>
+        <h1>Vision Zero:<br>Ten Years Later</h1>
+        <p class="deck">In 2014, New York City promised to eliminate all traffic deaths within a decade. Did it keep that promise?</p>
+    </header>
+
+    <!-- INTRODUCTION -->
+    <section class="section visible" id="intro">
+        <p class="section-number">Introduction</p>
+        <p>
+            Vision Zero is an initiative that originated in Sweden in 1997. Its core idea is human well-being and safety comes first. That means recognizing the fragility of 
+            humans and that errors are inevitable in traffic. Therefore the infrastructure must be designed to prevent such errors from resulting in fatalities. Vision zero is policy that 
+            has now been adopted in multiple cities and countries globablly. For the US more than 40 US cities have set a clear goal of eliminating traffic fatalities.
+            New York being one of them, adopted this vision in 2014 with the goal of completely eliminating traffic deaths 
+            within 10 years.
+        </p>
+        <p>
+            In this analysis, we investigate whether that promise has been kept, how much progress has been made, 
+            and what could potentially be done to further reduce deaths based on data analysis.
+        </p>
+        <p>
+            The data used in this analysis comes from the NYC Open Data Motor Vehicle Collisions dataset, 
+            which covers all reported collisions in New York City from 2013 to the present day.
+            The first thing we can ask is: What is the current state of traffic collisions, injuries, and deaths in NYC and how has it changed since Vision Zero was adopted?
+        </p>
+    </section>
+
+    <!-- FINDING 01 — Overview plot -->
+    <section class="section" id="section-1">
+        <p class="section-number">Finding 01</p>
+        <h2>Fewer crashes — but are New Yorkers actually safer?</h2>
+
+        <div class="stat-row">
+            <div class="stat">
+                <span class="stat-num">−58%</span>
+                <span class="stat-label">Collisions since 2014</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">−3%</span>
+                <span class="stat-label">Injuries since 2014</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">−13%</span>
+                <span class="stat-label">Deaths since 2014</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">227</span>
+                <span class="stat-label">Deaths in 2025</span>
+            </div>
+        </div>
+
+        <div class="viz-wrap">
+            <img src="plots\collisions_injuries_deaths_2014_2025.png" alt="NYC Traffic — Collisions, Injuries and Deaths 2014–2025">
+            <p class="viz-caption">Fig. 1 — Total collisions, injuries and deaths per year from 2014 to 2025. Source: NYC Open Data.</p>
+        </div>
+
+        <p>
+            Let's start with an overall assessment of collisions, injuries and deaths through the years. 
+            After the initation of Vision Zero 2014, we actually see the number of collision increasing until 2018 with 10 %, the number injuries increase by almost 20 % 
+            and number of deaths drop almost 13%. Vision zero is off to a rocky start but at least fatalities are going down.
+            We then see a sharp drop in collisions in 2020 which is most likely explained by COVID-19 reducing commuting and street activity across the city.
+            This is followed by an increase in death and injuries. Injuries do not reach the pre-COVID levels but deaths reach an all time high that are for some values 20 % above pre-covid levels.
+            From 2023 to 2025 we then begin to see decline again in both injuries and deaths. So where do we stand in 2025?
+        </p>
+        <p>
+            In comparing 2014 to 2025, we see that collisions are down 58%, injuries are down just 3%, and deaths are 
+            down 13% and at an all time low. While it's great collisions have been significatly reduced it's difficult to tell how much can be attributed to vision zero and 
+            how much can be attributed to COVID-19 permanently changing behaviours in traffic. In the essence Vision Zero's goal of zero deaths has not been met.
+        </p>
+
+        <div class="pull">
+            Fewer crashes are happening, but the ones that do are more likely to hurt or kill someone.
+        </div>
+
+        <p>
+            Because deaths and injuries have not fallen proportionally to collisions, the rate of injury 
+            and death per collision has actually increased since 2014. Next we want to see any patterns emerges from data analysis among fatalities in traffic.
+        </p>
+    </section>
+
+    <!-- FINDING 02 — PLACEHOLDER -->
+    <section class="section" id="section-2">
+        <p class="section-number">Finding 02</p>
+        <h2>Does weather affect fatality rates?</h2>
+
+        <div class="viz-wrap">
+            <img src="plots/weather_distributions.png" alt="Weather distributions — all collisions vs fatal collisions">
+            <p class="viz-caption">Fig. 2 — Weather conditions at time of all collisions vs fatal collisions only.</p>
+        </div>
+        <p style="margin-top: 32px;">
+            In an attempt to seek outside the data we wanted to see if any patterns could emerge from investigating external factors that might not have been in the awareness of the people involved.
+            Speculations were those such as preicipitation might make roads more slippery and therefore more dangerous. Or low visibility due to cloud cover might make it harder for drivers to see pedestrians and other vehicles. High wind speeds might reduce awareness of pedestrians and cyclist. Or high temperatures might weaken the concentration of drivers and make them more likely to make mistakes. 
+            For this we investigated the weather conditions during the time of the fatal collisions. Specifically we look into the cloud cover, wind speed, precipitation and temperature during the time of the fatal collisions.
+            We found that the weather conditions during fatal collisions are not significantly different from the overall weather conditions in collisions in general. This suggests that weather is not a major contributing factor to fatal collisions in NYC, and that other factors such as driver behavior, road design, and traffic enforcement are likely more important to address in order to reduce fatalities.
+        </p>
+
+    </section>
+    <!-- FINDING 03 — PLACEHOLDER -->
+    <section class="section" id="section-3">
+        <p class="section-number">Finding 03</p>
+        <h2>Why do fatal collisions happen?</h2>
+
+        <div class="placeholder">
+            <p class="placeholder-label">Visualization</p>
+            <p>Contributing factors — all vs fatal collisions (2025)<br>— insert plots/contributing_factors_2025.png —</p>
+        </div>
+
+        <p style="margin-top: 32px;">
+            [Your observations and interpretation of the contributing factors plot go here.]
+        </p>
+    </section>
+
+    <!-- FINDING 04 — PLACEHOLDER -->
+    <section class="section" id="section-4">
+        <p class="section-number">Finding 04</p>
+        <h2>Where do fatal collisions occur?</h2>
+
+        <div class="viz-wrap">
+            <iframe src="plots/deaths_animated_map.html" title="NYC Traffic Deaths 2014–2025"></iframe>
+            <p class="viz-caption">Fig. 4 — Animated map of NYC traffic deaths 2014–2025. Each dot decays over 30 days. Use the play button or slider to explore.</p>
+        </div>
+
+        <p style="margin-top: 32px;">
+            In an attempt to visualize the deaths and let any patterns emerge, we created an animated map of traffic deaths in NYC from 2014 to 2025.
+            While pretty, it's difficult to extract any meaningful patterns from this. So to make it more insightful we thought that even though the 
+            crashes are spread across the city, maybe the locations share some common characteristics.
+            So we investigated streets types dividning into cross street sections, mid-block, off-street, unknown.
+        </p>
+
+        <div class="viz-wrap">
+            <img src="plots/collisions_vs_deaths_location_type.png" alt="Collisions vs Deaths by Location Type">
+            <p class="viz-caption">Fig. 5 — Collisions vs Deaths by Location Type.</p>
+        </div>
+        <p style="margin-top: 32px;">
+            We found that while the majority of collisions happen at cross street sections and off street locations, the majority of deaths happen at cross street and mid-block locations. 
+            This makes intutive sense since midblock roads compared to off street section, the speed of the vehicles will not be as regulated by traffic lights, parking spots or crossing sections.
+            Which mean the policy making could focus on making mid-block sections safer by implementing traffic calming measures such as speed bumps, raised crosswalks, or chicanes to slow down traffic and reduce the severity of collisions in these areas.
+            To elaborate on this we can see if any particular spots in the city are more dangerous than others.
+        </p>
+
+    </section>
+
+    <!-- CONCLUSION -->
+    <section class="conclusion">
+        <div class="conclusion-inner">
+            <p class="eyebrow">Conclusion</p>
+            <h2>The promise is still unmet — but the path forward is clear</h2>
+            <p>
+                Ten years after Vision Zero was adopted, New York City has made progress — but far less than 
+                promised. Collisions have fallen sharply, yet deaths and injuries remain stubbornly high. 
+                The data points to a consistent theme: driver behavior, not road design alone, is the 
+                primary driver of fatal collisions. Unsafe speed, failure to yield, and disregard for 
+                traffic signals dominate fatal crashes. Addressing these requires stronger enforcement, 
+                not just infrastructure.
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        NYC Open Data · Motor Vehicle Collisions 2014–2025 · DTU 02806 Social Data Analysis
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+        document.querySelectorAll('.section:not(#intro)').forEach(s => observer.observe(s));
+    </script>
+
+</body>
+</html>

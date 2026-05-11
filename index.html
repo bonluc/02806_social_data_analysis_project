@@ -253,7 +253,7 @@
         <p class="section-number">Introduction</p>
         <p>
             Vision Zero is an initiative that originated in Sweden in 1997. Its core idea is human well-being and safety comes first. That means recognizing the fragility of 
-            humans and that errors are inevitable in traffic. Therefore the infrastructure must be designed to prevent such errors from resulting in fatalities. Vision zero is policy that 
+            humans and that errors are inevitable in traffic. Therefore the infrastructure must be designed to prevent such errors from resulting in fatalities. Vision zero is a policy that 
             has now been adopted in multiple cities and countries globablly. For the US more than 40 US cities have set a clear goal of eliminating traffic fatalities.
             New York being one of them, adopted this vision in 2014 with the goal of completely eliminating traffic deaths 
             within 10 years.
@@ -318,7 +318,7 @@
 
         <p>
             Because deaths and injuries have not fallen proportionally to collisions, the rate of injury 
-            and death per collision has actually increased since 2014. Next we want to see any patterns emerges from data analysis among fatalities in traffic.
+            and death per collision has actually increased since 2014. Are these fatatlities potentially affected by external conditionss such as weather ?
         </p>
     </section>
 
@@ -332,70 +332,103 @@
             <p class="viz-caption">Fig. 2 — Weather conditions at time of all collisions vs fatal collisions only.</p>
         </div>
         <p style="margin-top: 32px;">
-            In an attempt to seek outside the data we wanted to see if any patterns could emerge from investigating external factors that might not have been in the awareness of the people involved.
+            In an attempt to seek outside the data we had we wanted to see if any patterns could emerge from investigating external factors that might not have been in the awareness of the people involved.
             Speculations were those such as preicipitation might make roads more slippery and therefore more dangerous. Or low visibility due to cloud cover might make it harder for drivers to see pedestrians and other vehicles. High wind speeds might reduce awareness of pedestrians and cyclist. Or high temperatures might weaken the concentration of drivers and make them more likely to make mistakes. 
             For this we investigated the weather conditions during the time of the fatal collisions. Specifically we look into the cloud cover, wind speed, precipitation and temperature during the time of the fatal collisions.
-            We found that the weather conditions during fatal collisions are not significantly different from the overall weather conditions in collisions in general. This suggests that weather is not a major contributing factor to fatal collisions in NYC, and that other factors such as driver behavior, road design, and traffic enforcement are likely more important to address in order to reduce fatalities.
+        </p>
+        <div class="pull">
+            Weather has no significant impact on fatality rates.
+        </div>
+            We found that the weather conditions during fatal collisions are not significantly different from the overall weather conditions in collisions in general. 
+            This suggests that weather is not a major contributing factor to fatal collisions in NYC, and that other factors such as driver behavior, road design, and traffic enforcement are likely more important to address in order to reduce fatalities.
+            Another relevant external factor is the location of the fatalities, are some locations more dangerous than others? Are there any patterns in the locations of fatal collisions that could inform targeted interventions?
+            This was a look into external factors, but if we look at what happens internally inside the vehicles or the minds of those involved during fatal collisions, we might find something more interesting.
         </p>
 
-    </section>
-    <!-- FINDING 03 — PLACEHOLDER -->
+<!-- FINDING 03 — PLACEHOLDER -->
     <section class="section" id="section-3">
         <p class="section-number">Finding 03</p>
-        <h2>Why do fatal collisions happen?</h2>
-
-        <div class="placeholder">
-            <p class="placeholder-label">Visualization</p>
-            <p>Contributing factors — all vs fatal collisions (2025)<br>— insert plots/contributing_factors_2025.png —</p>
-        </div>
-
-        <p style="margin-top: 32px;">
-            [Your observations and interpretation of the contributing factors plot go here.]
-        </p>
-    </section>
-
-    <!-- FINDING 04 — PLACEHOLDER -->
-    <section class="section" id="section-4">
-        <p class="section-number">Finding 04</p>
         <h2>Where do fatal collisions occur?</h2>
 
         <div class="viz-wrap">
             <iframe src="plots/deaths_animated_map.html" title="NYC Traffic Deaths 2014–2025"></iframe>
-            <p class="viz-caption">Fig. 4 — Animated map of NYC traffic deaths 2014–2025. Each dot decays over 30 days. Use the play button or slider to explore.</p>
+            <p class="viz-caption">Fig. 3 — Animated map of NYC traffic deaths 2014–2025. Each dot decays over 30 days. Use the play button or slider to explore.</p>
         </div>
 
         <p style="margin-top: 32px;">
             In an attempt to visualize the deaths and let any patterns emerge, we created an animated map of traffic deaths in NYC from 2014 to 2025.
-            While pretty, it's difficult to extract any meaningful patterns from this. So to make it more insightful we thought that even though the 
-            crashes are spread across the city, maybe the locations share some common characteristics.
-            So we investigated streets types dividning into cross street sections, mid-block, off-street, unknown.
+            While pretty, it's difficult to extract any meaningful patterns from this. Let's try with a heatmap instead.
         </p>
+        <div class="viz-wrap">
+            <iframe src="plots/deaths_heatmap.html" title="NYC Traffic Deaths 2014–2025"></iframe>
+            <p class="viz-caption">Fig. 4 — Heatmap of NYC traffic deaths 2014–2025.</p>
+        </div>
 
+        <p style="margin-top: 32px;">
+            Interestingly if one looks at the heatmap we do see some hotspots of fatalities and we also see that the hotspots change depending on what time of day it is.
+            Specifically if one switches between midday, evening rush and evening the hotspots change towards north. But generally the deaths are still spread across the entire city.
+            Using just the heatmap makes hard to extract any meaningful insights about these locations.
+            So to make it more insightful we thought that even though the 
+            crashes are spread across the city, maybe the locations share some common characteristics.
+            So we investigated streets types dividing into cross street sections, mid-block, off-street, unknown.
+        </p>
         <div class="viz-wrap">
             <img src="plots/collisions_vs_deaths_location_type.png" alt="Collisions vs Deaths by Location Type">
             <p class="viz-caption">Fig. 5 — Collisions vs Deaths by Location Type.</p>
         </div>
+        <div class="pull">
+            Cross street and mid-block sections are the most dangerous locations for fatal collisions.
+        </div>
         <p style="margin-top: 32px;">
             We found that while the majority of collisions happen at cross street sections and off street locations, the majority of deaths happen at cross street and mid-block locations. 
             This makes intutive sense since midblock roads compared to off street section, the speed of the vehicles will not be as regulated by traffic lights, parking spots or crossing sections.
-            Which mean the policy making could focus on making mid-block sections safer by implementing traffic calming measures such as speed bumps, raised crosswalks, or chicanes to slow down traffic and reduce the severity of collisions in these areas.
-            To elaborate on this we can see if any particular spots in the city are more dangerous than others.
+            Which means the policy making could focus on making mid-block sections safer by implementing traffic calming measures such as speed bumps, raised crosswalks, or chicanes to slow down traffic and reduce the severity of collisions in these areas.
+            With a sense of the effect of external factors and the locations of the fatal collisions, we can now look into the internal factors of the collisions and the behaviours of those involved.
         </p>
+    </section>
+    </section>
+    <!-- FINDING 04 — PLACEHOLDER -->
+    <section class="section" id="section-4">
+        <p class="section-number">Finding 04</p>
+        <h2>Why do fatal collisions happen?</h2>
 
+        <div class="viz-wrap">
+            <iframe src="plots/contributing_factors_interactive.html" title="Contributing Factors — Fatal Collisions"></iframe>
+            <p class="viz-caption">Fig. 6 — Contributing factors — all vs fatal collisions (2025)</p>
+        </div>
+
+        <p style="margin-top: 32px;">
+            Interestingly we see that consitently across the years the top 4 contributing factors:
+            unsafe speed, failure to yield right of way, traffic control disregarded and driver inattention
+            are all related to driver behaviour and reflect poor decision making and risk assessment by the drivers.
+            Another point to note is that unsafe speed in 2025 is the most comon contributing factor in fatal collisions. This is interesting because among the initiatives of vision zero has been the <a href="https://en.wikipedia.org/wiki/Vision_Zero_(New_York_City)" target="_blank" style="color: #a8c5da;">introduction of more speed cameras, slow zones and lower speed limits.</a> 
+            So while these measures might have had some effect in reducing the number of collisions, they do not seem to have had a significant effect on reducing the number of fatal collisions.
+            This suggest that while road design and infrastructure improvements are important, they may not be sufficient to address all fatal collisions.
+            To further reduce fatalities, a less sufficient suggestion is to have a stronger focus on driver education, awareness campaigns, and enforcement of traffic laws to encourage safer driving behaviors since this has already been used.
+            A less obvious suggestion might be the design and engineering of the vehicles themselves. 
+        <div class="pull">
+            Road design and infrastructure might no tbe enough to prevent fatal collisions if driver behaviour is not addressed.
+        </div>
+            If driver inattention and usnafe speed are the main contributing factors, then perhaps there is a role for technology to play in mitigating these risks. 
+            A lot of roads have their speed limit as part of their gps location, intergating these with a vehicle's system to automatically adjust the speed by default could be a potential solution to reduce the number of fatal collisions caused by unsafe speed.
+            The inattention and general disregard of traffic rules would require a more advanced driving assistance systems that could detect potential hazardous situations and intervene when necessary to prevent a collision.
+        </p>
     </section>
 
     <!-- CONCLUSION -->
     <section class="conclusion">
         <div class="conclusion-inner">
             <p class="eyebrow">Conclusion</p>
-            <h2>The promise is still unmet — but the path forward is clear</h2>
+            <h2>Mitigating traffic fatalities is a complex challenge requiring a multi-faceted approach</h2>
             <p>
-                Ten years after Vision Zero was adopted, New York City has made progress — but far less than 
-                promised. Collisions have fallen sharply, yet deaths and injuries remain stubbornly high. 
-                The data points to a consistent theme: driver behavior, not road design alone, is the 
-                primary driver of fatal collisions. Unsafe speed, failure to yield, and disregard for 
-                traffic signals dominate fatal crashes. Addressing these requires stronger enforcement, 
-                not just infrastructure.
+                Ten years after Vision Zero was adopted, New York City has made progress but has not fully achieved the goal of eliminating traffic deaths. 
+                Collisions have fallen sharply, yet deaths and injuries remain stubbornly high. 
+                This exploration shows that driver behavior, not road design alone, is important to consider in mitigating fatal collisions.
+                Unsafe speed, failure to yield, and disregard for traffic signals dominate fatal crashes. Addressing these requires stronger enforcement or as suggested
+                technological interventions like automatic speed regulation and advanced driver assistance systems.
+                The good news is that cross sections and midblock areas are the most common locations for fatal collisions, which means targeted interventions can probably be tested in a relatively small number of locations and then scaled if successful.
+                Further details and insights from this analysis can be found in the <a href="https://github.com/bonluc/02806_social_data_analysis_project" target="_blank" style="color: #a8c5da;">accompanying notebook and code repository</a>.
+
             </p>
         </div>
     </section>
